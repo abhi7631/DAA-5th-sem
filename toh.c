@@ -1,21 +1,27 @@
 #include<stdio.h>
-void toh(int,char,char,char);
-main()
+
+
+
+int fibo(int );
+
+int main()
 {
-	int n;
-	printf("Enter the no. of Disc: ");
+	int f, n;
+	printf("\nEnter the term of the series:\t");
 	scanf("%d",&n);
-	printf("The steps are\n");
-	toh(n,'S','D','A');
+	f=fibo(n);
+	printf("\nThe %dth term is:\t%d",n,f);
+	return 0;
 }
-void toh(int n,char source,char dest,char aux)
+
+
+int fibo(int n)
 {
-	if(n==1)
-		printf("%c-> %c\n",source,dest);
+	int f;
+	if(n==1||n==0)
+		f=n;
 	else
-	{
-		toh((n-1),source,aux,dest);
-		toh(1,source,dest,aux);
-		toh((n-1),aux,dest,source);
-	}
+		f=fibo(n-2)+fibo(n-1);
+	
+	return(f);
 }

@@ -1,31 +1,26 @@
 #include<stdio.h>
-#include<time.h>
 
-int fibo(int);
+void toh(int ,char , char, char);
 
-main()
+int main()
 {
-	int n,i,l;
-	clock_t start,stop;	
-	double t;
-	printf("Enter the value of n: ");
+	int n;
+	printf("\n Enter the no of pegs:\t");
 	scanf("%d",&n);
+	toh(n,'S','A','D');
+	return 0;
+}
 
-	for(i=0;i<=n;i++)
-	{
-		start=clock();
-		l=fibo(i);
-		stop=clock();
-		t=(double)(stop-start)/CLOCKS_PER_SEC;
-		printf("\n%lf\t\t%d",t,l);
-	}	
-}
-int fibo(int n)
+
+void toh(int n,char s, char a, char d)
 {
-	if(n==0)
-		return 0;
-	else if(n==1)
-		return 1;
-	else
-		return(fibo(n-2)+fibo(n-1));
-}
+	if(n==1)
+	{
+			printf("\n%c-->%c",s,d);
+			return;	
+	}
+	toh(n-1,s, d,a );
+	printf("\n%c-->%c",s,a);
+	toh(n-1,a,s,d);
+	return;
+}	
